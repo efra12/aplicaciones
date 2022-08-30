@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+	<table class="mytable">
+		<thead><tr><th>CODIGO</th><th>PRODUCTO</th></tr></thead>
+	</table>
+
+	<script type="text/javascript">
+		
+		$.ajax(
+			{
+				type:"get",
+				url:"http://apis.miapp6.com/api/v1/ventas",
+				data: {},
+				success:function(response_local)
+						{
+							//console.log(response.data);
+
+							for(i=0;i<response.data.length;i++)
+							{
+								console.log(response.data[i].)
+
+								$(".mytable").append("<tr><td>"+response.data[i].codigo+"</td><td>"+response.data[i].producto+"</td></tr>")
+							}
+
+
+						}
+			}
+		);
+
+
+			
+
+	</script>
+
+
+</body>
+</html>

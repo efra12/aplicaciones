@@ -1,0 +1,104 @@
+<div id="NuevaVenta" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header" Venta</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Venta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        
+        <div class="row">
+            <div class="col-12">
+              <label for="txtCodigo" class="form-label">Codigo</label>
+              <input type="text" class="form-control" id="txtCodigo" placeholder="Ingrese codigo">
+            </div>
+            <div class="col-12">
+              <label for="txtProducto" class="form-label">Producto</label>
+              <input type="text" class="form-control" id="txtProducto" placeholder="Ingrese producto">
+            </div>
+            <div class="col-12">
+              <label for="txtCantidad" class="form-label">Cantidad</label>
+              <input type="text" class="form-control" id="txtCantidad" placeholder="Ingrese cantidad">
+            </div>
+            <div class="col-12">
+              <label for="txtDescuento" class="form-label">Descuento</label>
+              <input type="text" class="form-control" id="txtDescuento" placeholder="Ingrese descuento">
+            </div>
+            <div class="col-12">
+              <label for="txtTotal" class="form-label">Total</label>
+              <input type="text" class="form-control" id="txtTotal" placeholder="Ingrese total">
+            </div>
+            <div class="col-12">
+              <label for="txtTarjeta" class="form-label">Tarjeta</label>
+              <input type="text" class="form-control" id="txtTarjeta" placeholder="Ingrese tarjeta">
+            </div>
+            <div class="col-12">
+              <label for="txtFecha" class="form-label">Fecha</label>
+              <input type="text" class="form-control" id="txtFecha" placeholder="Ingrese fecha">
+            </div>
+            <div class="col-12">
+              <label for="txtDistrito" class="form-label">Distrito</label>
+              <input type="text" class="form-control" id="txtDistrito" placeholder="Ingrese distrito">
+            </div>
+            <div class="col-12">
+              <label for="txtProvincia" class="form-label">Provincia</label>
+              <input type="text" class="form-control" id="txtProvincia" placeholder="Ingrese provincia">
+            </div>
+            <div class="col-12">
+              <label for="txtVendedor" class="form-label">Vendedor</label>
+              <input type="text" class="form-control" id="txtVerndedor" placeholder="Ingrese vendedor">
+            </div>
+            <div class="col-12">
+              <label for="txtPromocion" class="form-label">Promocion</label>
+              <input type="text" class="form-control" id="txtPromocion" placeholder="Ingrese promocion">
+            </div>
+            <div class="col-12">
+              <label for="txtCupon" class="form-label">Cupon</label>
+              <input type="text" class="form-control" id="txtCupon" placeholder="Ingrese cupon">
+        </div>
+
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="guardarVentas()">Guardar</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  
+ function guardarVenta()
+ {
+
+  $.ajax(
+      {
+        type:"post",
+        url:"http://apis.miapp6.com/api/v1/ventas",
+        data: {codigo:$("#txtCodigo").val(),producto:$("#txtProducto").val(),cantidad:$("#txtCantidad").val(),descuento:$("#txtDescuento").val(),total:$("#txtTotal").val(),tarjeta:$("#txtTarjeta").val(),fecha:$("#txtFecha").val(),distrito:$("#txtDistrito").val(),provincia:$("#txtProvincia").val(),vendedor:$("#txtVendedor").val(),promocion:$("#txtPromocion").val(),cupon:$("#txtCupon").val()},
+
+        success:function(response)
+            {
+            
+                
+                $('#nuevaVenta').modal("hide");
+
+                recargarData();
+
+
+            }
+      }
+    );
+
+
+
+ }
+
+
+</script>

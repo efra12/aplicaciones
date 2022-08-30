@@ -1,0 +1,245 @@
+<div id="nuevaVenta" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Venta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+  
+        <form class="row g-3 needs-validation" novalidate>
+    
+      <div class="modal-body">
+        
+  
+          <input type="hidden" name="ID" id="ID">
+        <div class="row">
+            <div class="col-12">
+              <label for="txtCodigo" class="form-label">Codigo</label>
+              <input type="text" class="form-control" id="txtCodigo" placeholder="Ingrese codigo" required>
+              <div class="valid-feedback">
+                ok
+              </div>
+               <div class="invalid-feedback">
+                Ingrese el código
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="txtProducto" class="form-label">Producto</label>
+              <input type="text" class="form-control" id="txtProducto" placeholder="Ingrese producto" required>
+
+              <div class="invalid-feedback">
+                Ingrese el producto
+              </div>
+            </div>
+            </div>
+            <div class="col-12">
+              <label for="txtDescuento" class="form-label">Descuento</label>
+              <input type="text" class="form-control" id="txtDescuento" placeholder="Ingrese Descuento" required>
+
+              <div class="invalid-feedback">
+                Ingrese el descuento
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="txtTotal" class="form-label">Total</label>
+              <input type="text" class="form-control" id="txtTotal" placeholder="Ingrese total" required>
+
+              <div class="invalid-feedback">
+                Ingrese el total
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="txtTarjeta" class="form-label">Tarjeta</label>
+              <input type="text" class="form-control" id="txtTarjeta" placeholder="Ingrese tarjeta" required>
+
+              <div class="invalid-feedback">
+                Ingrese la tarjeta
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="txtFecha" class="form-label">Fecha</label>
+              <input type="text" class="form-control" id="txtFecha" placeholder="Ingrese fecha" required>
+
+              <div class="invalid-feedback">
+                Ingrese la fecha
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="txtDistrito" class="form-label">Distrito</label>
+              <input type="text" class="form-control" id="txtDistrito" placeholder="Ingrese distrito" required>
+
+              <div class="invalid-feedback">
+                Ingrese el distrito
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="txtProvincia" class="form-label">Provincia</label>
+              <input type="text" class="form-control" id="txtProvincia" placeholder="Ingrese provincia" required>
+
+              <div class="invalid-feedback">
+                Ingrese la provincia
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="txtVendedor" class="form-label">Vendedor</label>
+              <input type="text" class="form-control" id="txtVendedor" placeholder="Ingrese vendedor" required>
+
+              <div class="invalid-feedback">
+                Ingrese el vendedor
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="txtPromocion" class="form-label">Promocion</label>
+              <input type="text" class="form-control" id="txtPromocion" placeholder="Ingrese promocion" required>
+
+              <div class="invalid-feedback">
+                Ingrese la promocion
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="txtCupon" class="form-label">Cupon</label>
+              <input type="text" class="form-control" id="txtCupon" placeholder="Ingrese cupon" required>
+
+              <div class="invalid-feedback">
+                Ingrese el cupon
+              </div>
+
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  console.log(forms);
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+
+      console.log(form);
+
+      form.addEventListener('submit', function (event) {
+
+        console.log("validacion");
+
+        if (form.checkValidity()) {
+          
+          guardarVenta();
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})();
+
+
+
+
+  
+ function guardarVenta()
+ {
+
+  var ID=$("#ID").val();
+
+  if(ID)
+  {
+    $.ajax(
+      {
+        type:"put",
+        url:"http://apis.miapp6.com/api/v1/ventas/"+ID,
+        data: {
+              codigo:$("#txtCodigo").val(),
+              Descuanto:$("#txtProducto").val()
+              descuento:$("#txtDescuento").val()
+              total:$("#txtTotal").val()
+              tarjeta:$("#txtTarjeta").val()
+              fecha:$("#txtFecha").val()
+              distrito:$("#txtDistrito").val()
+              provincia:$("#txtProvincia").val()
+              vendedor:$("#txtVendedor").val()
+              promocion:$("#txtPromocion").val()
+              cupon:$("#txtCupon").val()
+              },
+        success:function(response)
+            {
+            
+
+              window.FlashMessage.success('La venta se guardo correctamente');
+
+                $('#nuevaVenta').modal("hide");
+
+
+
+                recargarData();
+
+
+            }
+      }
+    );
+
+  }
+  else
+  {
+
+    $.ajax(
+      {
+        type:"post",
+        url:"http://apis.miapp6.com/api/v1/ventas",
+        data: {
+              codigo:$("#txtCodigo").val(),
+              producto:$("#txtProducto").val()
+              descuento:$("#txtDescuento").val()
+              total:$("#txtTotal").val()
+              tarjeta:$("#txtTarjeta").val()
+              fecha:$("#txtFecha").val()
+              distrito:$("#txtDistrito").val()
+              provincia:$("#txtProvincia").val()
+              vendedor:$("#txtVendedor").val()
+              promocion:$("#txtPromocion").val()
+              cupon:$("#txtCupon").val()
+              },
+        success:function(response)
+            {
+            
+                window.FlashMessage.success('La venta se guardo correctamente');
+
+
+                $('#nuevaVenta').modal("hide");
+
+                recargarData();
+
+
+            }
+      }
+    );
+
+  } 
+
+  
+
+
+ }
+
+
+</script>

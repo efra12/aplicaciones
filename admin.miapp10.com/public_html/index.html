@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript" src="js/init.js"></script>
+
+</head>
+<body>
+	<table id="tVentas">
+		<thead>
+			<th>CODIGO</th>
+			<th>PRODUCTO</th>
+			<th>CANTIDAD</th>
+			<th>DESCUENTO</th>
+			<th>TOTAL</th>
+			<th>TARJETA</th>
+			<th>FECHA</th>
+			<th>DISTRITO</th>
+			<th>PROVINCIA</th>
+			<th>VENDEDOR</th>
+			<th>PROMOCION</th>
+			<th>CUPON</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>C001</td>
+				<td>VENTA 1</td>
+			</tr>
+			<tr>
+				<td>C002</td>
+				<td>VENTA 2</td>
+			</tr>
+		</tbody>
+	</table>
+
+<script type="text/javascript">
+	
+	var i;
+
+	for(i=0;i<10;i++)
+	{
+		if(i==5)
+		console.log("numero "+i);
+	}
+
+	var resp=suma(10,5);
+
+	var resp=suma(10,5);
+	
+	var resp=suma(10,5);
+
+
+	//document.write("hola mundo cruel");
+
+	var tabla1,tbody1;
+
+	tabla1=document.getElementById("tventas");
+
+	tbody1=tabla1.children[1];
+
+	tbody1.innerHTML=tbody1.innerHTML+"<td>V004</td><td>nombre 4</td>";
+	tbody1.innerHTML=tbody1.innerHTML+"<td>V004</td><td>nombre 4</td>";
+	tbody1.innerHTML=tbody1.innerHTML+"<td>V004</td><td>nombre 4</td>";
+	tbody1.innerHTML=tbody1.innerHTML+"<td>V004</td><td>nombre 4</td>";
+	tbody1.innerHTML=tbody1.innerHTML+"<td>V004</td><td>nombre 4</td>";
+	tbody1.innerHTML=tbody1.innerHTML+"<td>V004</td><td>nombre 4</td>";
+	
+	console.log(tbody1.innerHTML);
+
+   //console.log(document.getElementById("tventas").children[1])
+
+
+   function suma(a,b)
+   {
+   	return a+b;
+   }
+
+</script>
+
+
+</body>
+</html>
